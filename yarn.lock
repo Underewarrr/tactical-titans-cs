@@ -2645,7 +2645,7 @@
   "resolved" "https://registry.npmjs.org/sequelize-pool/-/sequelize-pool-7.1.0.tgz"
   "version" "7.1.0"
 
-"sequelize@^6.28.0":
+"sequelize@^6.31.1":
   "integrity" "sha512-cahWtRrYLjqoZP/aurGBoaxn29qQCF4bxkAUPEQ/ozjJjt6mtL4Q113S3N39mQRmX5fgxRbli+bzZARP/N51eg=="
   "resolved" "https://registry.npmjs.org/sequelize/-/sequelize-6.31.1.tgz"
   "version" "6.31.1"
