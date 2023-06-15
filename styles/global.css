@@ -34,13 +34,13 @@ body {
 }
 
 .main-card-csgo {
-  background-image: linear-gradient(to bottom, #de9b35, #c58423, #bd7a15, #a86808, #9c5f03, #804d02, #5f3901, #482c01);
   color: white;
-  padding: 20px;
+  padding: 20px, 20px, 20px, 20px;
+  margin: 15px 15px 15px 15px;
+
 }
 
 .category-card-csgo {
-  background-image: linear-gradient(to bottom, #5d79ae, #4a689f, #355287, #244074, #112750, #081b3d, #02122d, #02122d);
   border-radius: 10px;
   padding: 20px;
 }
