@@ -42,7 +42,6 @@ export default function Index() {
 
   return (
     <>
-      <Header />
 
      
         <Card.Header

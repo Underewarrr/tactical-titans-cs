@@ -33,7 +33,6 @@ export default function Index() {
 
   return (
     <>
-      <Header />
       <Card.Header
       style={{ width: '', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem' }}
       >
