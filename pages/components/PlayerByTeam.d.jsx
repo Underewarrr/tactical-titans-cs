@@ -30,7 +30,7 @@ const PlayerByTeam = ({ teamId }) => {
         <div>
           {players.length > 0 ? (
             <Card className='main-card-csgo bg-dark'>
-              <center><h2>Seletected Team Players Information</h2></center>
+              <center><h2>Team {teamId} Players Information</h2></center>
               {players.map((player) => (
                 <Card key={player.PlayerId} className="mb-3 main-card-csgo bg-dark text-white">
                   <Card.Body>
