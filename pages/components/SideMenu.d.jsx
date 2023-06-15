@@ -4,6 +4,7 @@ import CSGOTeams from '../cs/CSGOTeams.d';
 import CSGOPlayers from '../cs/CSGOPlayers.d';
 import CSGONews from '../cs/CSGONews.d';
 import CSGOUpdates from '../cs/CSGOUpdates.d';
+import CSGOScore from '../cs/CSGOLeagues.d';
 
 class SideMenu extends React.Component {
   state = {
@@ -37,10 +38,10 @@ class SideMenu extends React.Component {
             <CSGOUpdates />
           </section>
         );
-      case 'CS:GO Teams':
+      case 'CS:GO Leagues':
         return (
           <section>
-            <CSGOTeams />
+            <CSGOLeagues />
           </section>
         );
       case 'CS:GO Players':
@@ -79,7 +80,7 @@ class SideMenu extends React.Component {
           <div id="listView" className="list">
             <li className={activeItem === 'CS:GO News' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO News')}><a href="#">CS:GO News</a></li>
             <li className={activeItem === 'CS:GO Updates' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Updates')}><a href="#">CS:GO Updates</a></li>
-            <li className={activeItem === 'CS:GO Leagues' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Leagues')}><a href="#">CS:GO Teams</a></li>
+            <li className={activeItem === 'CS:GO Leagues' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Leagues')}><a href="#">CS:GO Leagues / Teams</a></li>
           </div>
         </div>
 
