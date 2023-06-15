@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { Card } from 'react-bootstrap';
 import axios from 'axios';
+import ReactLoading from 'react-loading';
+import Article from '../components/Article.d';
 
 const CSGOUpdates = () => {
   const [csgoNews, setCSGONews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCSGONews = async () => {
       try {
+        setIsLoading(true); // Set loading state to true
         const response = await axios.get('/api/cs/get-updates');
         setCSGONews(response.data);
       } catch (error) {
         console.error('Error fetching CSGO news:', error);
+      } finally {
+        setIsLoading(false); // Set loading state to false
       }
     };
 
     fetchCSGONews();
   }, []);
+
 
   const getCategory = (contents) => {
     if (contents.includes('Mirage Fixed') || contents.includes('full of uncensored information')) {
@@ -63,8 +71,13 @@ const CSGOUpdates = () => {
   };
 
   const sanitizeContents = (contents) => {
-    return contents.replace(/{STEAM_CLAN_IMAGE}.*?\.png/g, '');
+    // FIX HTML TAGS FROM APISTEAM 
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = contents;
+    const sanitizedContents = tempElement.textContent || tempElement.innerText;
+    return sanitizedContents;
   };
+
 
   const groupedNews = csgoNews.reduce((result, newsItem) => {
     const category = getCategory(newsItem.contents);
@@ -76,33 +89,43 @@ const CSGOUpdates = () => {
   }, {});
 
   return (
-    <div>
-      <h2>CSGO Updates</h2>
-      {Object.entries(groupedNews).map(([category, newsItems]) => (
-        <div key={category}>
-          <h3>{category}</h3>
-          <ul>
-            {newsItems.map((newsItem) => (
-              <li key={newsItem.gid}>
-                {newsItem.contents && (
-                  <img src={getSteamImageURL(newsItem.contents)} alt="" />
-                )}
-                <a href={newsItem.url} target="_blank" rel="noopener noreferrer">
-                  {newsItem.title}
-                </a>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeContents(newsItem.contents),
-                  }}
-                ></p>
-              </li>
-            ))}
-          </ul>
+    <div className="main-card-csgo">
+      <center>
+        <h2>CSGO Updates</h2>
+      </center>
+      {isLoading ? (
+        <div className="loading-container">
+          <ReactLoading type="spin" color="#fff" />
         </div>
-      ))}
+      ) : (
+        Object.entries(groupedNews).map(([category, newsItems]) => (
+          <Card key={category} className="mt-4 bg-dark text-white category-card-csgo">
+            <Card.Body>
+              <center>
+                <Card.Title>
+                  <h2>{category}</h2>
+                </Card.Title>
+              </center>
+              <ul>
+                {newsItems.map((newsItem) => (
+                  <div className="mt-4 bg-dark" id="article-li" key={newsItem.gid}>
+                    {newsItem.contents && (
+                      <Article
+                        title={newsItem.title}
+                        content={sanitizeContents(newsItem.contents)}
+                        imageUrl={getSteamImageURL(newsItem.contents)}
+                        url={newsItem.url}
+                      />
+                    )}
+                  </div>
+                ))}
+              </ul>
+            </Card.Body>
+          </Card>
+        ))
+      )}
     </div>
   );
-  
 };
 
 export default CSGOUpdates;
