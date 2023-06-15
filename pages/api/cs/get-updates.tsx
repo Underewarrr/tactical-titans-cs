@@ -18,7 +18,7 @@ const getSteamUpdates = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const getCSGOUpdates = async (req: NextApiRequest, res: NextApiResponse) => {
   const url =
-    'https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=730&count=15&maxlength=300&format=json';
+    'https://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=730&count=15&maxlength=2550&format=json';
 
   const response = await axios.get(url);
   const data = response.data;
