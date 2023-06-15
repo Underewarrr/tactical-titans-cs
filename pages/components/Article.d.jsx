@@ -2,8 +2,6 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 const Article = ({ title, content, imageUrl, url }) => {
-  const sanitizedContent = content.replace('./*.png', '');
-
   return (
     <Card className="text-white bg-dark">
       {imageUrl && <Card.Img variant="top" src={imageUrl} alt="" />}
@@ -13,7 +11,7 @@ const Article = ({ title, content, imageUrl, url }) => {
             {title}
           </a>
         </Card.Title>
-        <Card.Text>{sanitizedContent}</Card.Text>
+        <Card.Text>{content}</Card.Text>
         <div className="d-flex justify-content-end">
           <Button variant="outline-light" className="mr-2">
             Comment
