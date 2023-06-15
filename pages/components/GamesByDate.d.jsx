@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
+import ReactLoading from 'react-loading';
 
 const GamesByDate = ({ date }) => {
   const [games, setGames] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchGamesByDate = async () => {
@@ -10,6 +12,7 @@ const GamesByDate = ({ date }) => {
         const response = await fetch(`https://api.sportsdata.io/v3/csgo/scores/json/GamesByDate/${date}?key=167bc5b286e24056b6976303d4d9a68a`);
         const data = await response.json();
         setGames(data);
+        setIsLoading(false);
       } catch (error) {
         console.log('Error fetching games by date:', error);
       }
@@ -18,22 +21,27 @@ const GamesByDate = ({ date }) => {
     fetchGamesByDate();
   }, [date]);
 
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <ReactLoading type="spin" color="#000" />
+      </div>
+    );
+  }
+
   return (
     <Card className='main-card-csgo bg-dark'>
-      
       <center>
-      <Card.Header>
-      <h2>Games on {date}</h2>
-      </Card.Header>
-
+        <Card.Header>
+          <h2>Games on {date}</h2>
+        </Card.Header>
       </center>
-      
-      
+
       {games.length === 0 ? (
         <p>No games found for this date.</p>
       ) : (
         <div className="game-cards">
-          {games.map(game => (
+          {games.map((game) => (
             <Card key={game.GameId} className="game-card bg-dark">
               <Card.Body>
                 <Card.Title>Game {game.GameId}</Card.Title>

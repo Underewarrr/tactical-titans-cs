@@ -95,7 +95,7 @@ const sanitizeContents = (contents) => {
       </center>
       {isLoading ? (
         <div className="loading-container">
-          <ReactLoading type="spin" color="#fff" />
+          <ReactLoading type="spin" color="#de9b35" />
         </div>
       ) : (
         Object.entries(groupedNews).map(([category, newsItems]) => (

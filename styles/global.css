@@ -20,6 +20,9 @@ body {
 
 /* START CSGOUpdates */
 
+#article-li:hover {
+  transform: scale(1.02);
+}
 #header {
   display: block;
   position: fixed;
@@ -45,11 +48,18 @@ body {
   padding: 20px;
 }
 
-#article-li:hover {
-  transform: scale(1.02);
-}
 
 /* END CSGOUpdates */
+
+
+.team-info-button {
+  background-color: #de9b35;
+  border-color: #865d06;
+}
+.team-info-button:hover{
+  background-color: #a9782f;
+  border-color: #d3a238;
+}
 
 /* Start Loading Componenet */
 

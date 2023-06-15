@@ -1,10 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Accordion, Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Card } from 'react-bootstrap';
 import ReactLoading from 'react-loading';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import MembershipsByTeam from '../components/MemberShipByTeam.d';
 
-const LeagueInfo = ({ leagueId }) => {
+const LeagueInfo = ({ leagueId, onTeamSelect }) => {
   const [leagueInfo, setLeagueInfo] = useState(null);
-  //const resultRef = useRef(null);
+  const [selectedTeamId, setSelectedTeamId] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchLeagueInfo = async () => {
@@ -12,7 +16,6 @@ const LeagueInfo = ({ leagueId }) => {
         const response = await fetch(`https://api.sportsdata.io/v3/csgo/scores/json/CompetitionDetails/${leagueId}?key=167bc5b286e24056b6976303d4d9a68a`);
         const data = await response.json();
         setLeagueInfo(data);
-        scrollToResult();
       } catch (error) {
         console.log('Error fetching league info:', error);
       }
@@ -23,25 +26,26 @@ const LeagueInfo = ({ leagueId }) => {
     }
   }, [leagueId]);
 
-  //const scrollToResult = () => {
-   // resultRef.current.scrollIntoView({ behavior: 'smooth' });
- //resultRef };
-
   if (!leagueInfo) {
     return (
       <div className="loading-container">
-        <ReactLoading type="spin" color="#000" />
+        <ReactLoading type="spin" color="#de9b35" />
       </div>
     );
   }
 
   const filteredTeams = leagueInfo.Teams.filter(team => team.Players.length > 0 && team.Players.some(player => player.MatchName));
 
+  const handleTeamSelect = (teamId) => {
+    setSelectedTeamId(teamId);
+    onTeamSelect(teamId); // Pass the selected team ID to the parent component
+  };
+
   return (
     <Card className="main-card-csgo bg-dark">
       <Card.Header>
         <h2>
-          <center>CSGO Info {leagueId}</center>
+          <center>CSGO League Teams {leagueId}</center>
         </h2>
       </Card.Header>
       <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
@@ -60,11 +64,17 @@ const LeagueInfo = ({ leagueId }) => {
                   </div>
                 ))}
               </Card.Text>
+              {/* <Link href={`/team/${team.TeamId}`} passHref>
+                <Button className='team-info-button'>View Team Info</Button>
+              </Link> */}
+              <Button className='team-info-button' onClick={() => handleTeamSelect(team.TeamId)}>Select Team</Button>
             </Card.Body>
           </Card>
         ))}
       </div>
-      {/* <div ref={resultRef} /> */}
+      {selectedTeamId && (
+        <MembershipsByTeam teamId={selectedTeamId} />
+      )}
     </Card>
   );
 };

@@ -3,9 +3,10 @@
 
 ### CSGO PR's
 - [SideBar Menu.](https://github.com/Underewarrr/tactical-titans-cs/pull/1)
-- [Atualizações do CSGO SteamAPI.](https://github.com/Underewarrr/tactical-titans-cs/pull/2)
-- [Atualizações do CSGO SteamAPI.](https://github.com/Underewarrr/tactical-titans-cs/pull/3)
-- [Pagina de Ligas e Times.](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
+- [Atualizações do CSGO SteamAPI. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/2)
+- [Atualizações do CSGO SteamAPI. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/3)
+- [Pagina de Ligas e Times. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
+- [Pagina de Ligas e Times. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/5)
 
 ### Vercel
 - As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.

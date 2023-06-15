@@ -1,16 +1,20 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import GamesByDate from './GamesByDate.d';
+import ReactLoading from 'react-loading';
 
-const Competition = ({ onLeagueSelect }) => {
+const Leagues = ({ onLeagueSelect }) => {
   const [scores, setScores] = useState([]);
   const [lastDate, setLastDate] = useState(null);
-  //const resultRef = useRef(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://api.sportsdata.io/v3/csgo/scores/json/Competitions?key=167bc5b286e24056b6976303d4d9a68a')
       .then(response => response.json())
-      .then(data => setScores(data));
+      .then(data => {
+        setScores(data);
+        setLoading(false);
+      });
   }, []);
 
   const handleLeagueClick = (competitionId) => {
@@ -21,8 +25,15 @@ const Competition = ({ onLeagueSelect }) => {
       setLastDate(endDate);
     }
     onLeagueSelect(competitionId);
-    //resultRef.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <ReactLoading type="spin" color="#de9b35" />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -51,11 +62,10 @@ const Competition = ({ onLeagueSelect }) => {
             </Card>
           ))}
         </div>
-        {/* <div ref={resultRef} /> */}
       </Card>
       {lastDate && <GamesByDate date={lastDate} />}
     </div>
   );
 };
 
-export default Competition;
+export default Leagues;
