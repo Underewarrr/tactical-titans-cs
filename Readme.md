@@ -1,5 +1,9 @@
 ### Health Status
 ...
+
+### CSGO PR's
+- [SideBar Menu.](https://github.com/Underewarrr/tactical-titans-cs/pull/1)
+
 ### Vercel
 - As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.
 
