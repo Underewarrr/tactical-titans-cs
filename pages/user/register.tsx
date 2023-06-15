@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Alert, Button, Card, Form, Spinner } from "react-bootstrap";
 import axios from "axios";
-import Header from "../components/Header";
 import { MDBBreadcrumb, MDBBreadcrumbItem, MDBCol, MDBRow } from "mdb-react-ui-kit";
 
 export default function Index() {
@@ -34,7 +33,6 @@ export default function Index() {
 
   return (
     <>
-      <Header />
       <Card.Header
       style={{ width: '', marginTop: '1rem', marginLeft: '1rem', marginRight: '1rem' }}
       >
