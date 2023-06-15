@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import LeaguesList from '../components/LeaguesList';
 import LeagueInfo from '../components/LeagueInfo.d';
-import MembershipsByTeam from '../components/MemberShipByTeam.d';
-
+//import MembershipsByTeam from '../components/MemberShipByTeam.d';
+import PlayerByTeam from '../components/PlayerByTeam.d'
 const Leagues = () => {
   const [selectedLeagueId, setSelectedLeagueId] = useState(null);
   const [selectedTeamId, setSelectedTeamId] = useState(null);
@@ -27,7 +27,8 @@ const Leagues = () => {
         <LeagueInfo leagueId={selectedLeagueId} onTeamSelect={handleTeamSelect} />
       )}
       {selectedTeamId && (
-        <MembershipsByTeam teamId={selectedTeamId} />
+       // <MembershipsByTeam teamId={selectedTeamId} />
+        <PlayerByTeam teamId={selectedTeamId} />
       )}
     </div>
   );

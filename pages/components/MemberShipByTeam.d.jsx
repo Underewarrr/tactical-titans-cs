@@ -13,7 +13,7 @@ const MembershipsByTeam = ({ teamId }) => {
         const response = await fetch(`https://api.sportsdata.io/v3/csgo/scores/json/MembershipsByTeam/${teamId}?key=167bc5b286e24056b6976303d4d9a68a`);
         const data = await response.json();
         setMemberships(data);
-        console.log(data);
+        console.log(teamId);
       } catch (error) {
         console.log('Error fetching memberships:', error);
       }
