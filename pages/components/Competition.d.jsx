@@ -5,7 +5,7 @@ import GamesByDate from './GamesByDate.d';
 const Competition = ({ onLeagueSelect }) => {
   const [scores, setScores] = useState([]);
   const [lastDate, setLastDate] = useState(null);
-  const resultRef = useRef(null);
+  //const resultRef = useRef(null);
 
   useEffect(() => {
     fetch('https://api.sportsdata.io/v3/csgo/scores/json/Competitions?key=167bc5b286e24056b6976303d4d9a68a')
@@ -21,7 +21,7 @@ const Competition = ({ onLeagueSelect }) => {
       setLastDate(endDate);
     }
     onLeagueSelect(competitionId);
-    resultRef.current.scrollIntoView({ behavior: 'smooth' });
+    //resultRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -51,7 +51,7 @@ const Competition = ({ onLeagueSelect }) => {
             </Card>
           ))}
         </div>
-        <div ref={resultRef} />
+        {/* <div ref={resultRef} /> */}
       </Card>
       {lastDate && <GamesByDate date={lastDate} />}
     </div>

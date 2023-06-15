@@ -4,7 +4,7 @@ import ReactLoading from 'react-loading';
 
 const LeagueInfo = ({ leagueId }) => {
   const [leagueInfo, setLeagueInfo] = useState(null);
-  const resultRef = useRef(null);
+  //const resultRef = useRef(null);
 
   useEffect(() => {
     const fetchLeagueInfo = async () => {
@@ -23,9 +23,9 @@ const LeagueInfo = ({ leagueId }) => {
     }
   }, [leagueId]);
 
-  const scrollToResult = () => {
-    resultRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
+  //const scrollToResult = () => {
+   // resultRef.current.scrollIntoView({ behavior: 'smooth' });
+ //resultRef };
 
   if (!leagueInfo) {
     return (
@@ -64,7 +64,7 @@ const LeagueInfo = ({ leagueId }) => {
           </Card>
         ))}
       </div>
-      <div ref={resultRef} />
+      {/* <div ref={resultRef} /> */}
     </Card>
   );
 };
