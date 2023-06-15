@@ -19,21 +19,12 @@ module.exports = {
     return [
       {
         source: '/ads.txt',
-        destination: '/static/ads.txt', // Change the path if necessary
-      },
-    ];
-  },
-  async redirects() {
-    return [
-      {
-        source: '/ads',
         destination: '/ads.txt',
-        permanent: true,
       },
     ];
   },
   async afterExport() {
-    const adsFilePath = path.join(__dirname, 'public', 'ads.txt'); // Change the path if necessary
+    const adsFilePath = path.join(__dirname, 'ads.txt'); // Change the path if necessary
     const staticAdsPath = path.join(__dirname, '.next', 'static', 'ads.txt'); // Change the path if necessary
 
     fs.copyFileSync(adsFilePath, staticAdsPath);
