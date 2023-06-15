@@ -70,13 +70,13 @@ const CSGOUpdates = () => {
     return null;
   };
 
-  const sanitizeContents = (contents) => {
-    // FIX HTML TAGS FROM APISTEAM 
-    const tempElement = document.createElement('div');
-    tempElement.innerHTML = contents;
-    const sanitizedContents = tempElement.textContent || tempElement.innerText;
-    return sanitizedContents;
-  };
+const sanitizeContents = (contents) => {
+  // FIX HTML TAGS FROM APISTEAM 
+  const tempElement = document.createElement('div');
+  tempElement.innerHTML = contents;
+  const sanitizedContents = tempElement.textContent || tempElement.innerText;
+  return sanitizedContents || ''; // Return an empty string if the value is undefined
+};
 
 
   const groupedNews = csgoNews.reduce((result, newsItem) => {
