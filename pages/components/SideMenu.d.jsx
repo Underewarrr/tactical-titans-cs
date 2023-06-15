@@ -3,6 +3,7 @@ import CSGOLeagues from '../cs/CSGOLeagues.d';
 import CSGOTeams from '../cs/CSGOTeams.d';
 import CSGOPlayers from '../cs/CSGOPlayers.d';
 import CSGONews from '../cs/CSGONews.d';
+import CSGOUpdates from '../cs/CSGOUpdates.d';
 
 
 
@@ -32,6 +33,12 @@ class SideMenu extends React.Component {
             <CSGONews />
           </section>
         );
+        case 'CS:GO Updates':
+          return (
+            <section>
+              <CSGOUpdates />
+            </section>
+          );
       case 'CS:GO Teams':
         return (
           <section>
@@ -75,6 +82,7 @@ class SideMenu extends React.Component {
         <div id="leftWrapper">
           <div id="listView" className="list">
             <li className={activeItem === 'CS:GO News' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO News')}><a href="#">CS:GO News</a></li>
+            <li className={activeItem === 'CS:GO Updates' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Updates')}><a href="#">CS:GO Updates</a></li>
             <li className={activeItem === 'CS:GO Leagues' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Leagues')}><a href="#">CS:GO Leagues</a></li>
             <li className={activeItem === 'CS:GO Teams' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Teams')}><a href="#">CS:GO Teams</a></li>
             <li className={activeItem === 'CS:GO Players' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Players')}><a href="#">CS:GO Players</a></li>
