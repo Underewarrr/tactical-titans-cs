@@ -3,6 +3,7 @@ import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import Article from '../components/Article.d';
+import CurrentLeagues from '../widgets/CurrentLeagues';
 
 const CSGOUpdates = () => {
   const [csgoNews, setCSGONews] = useState([]);
@@ -90,6 +91,7 @@ const sanitizeContents = (contents) => {
 
   return (
     <div className="main-card-csgo">
+      < CurrentLeagues/>
       <center>
         <h2>CSGO Updates</h2>
       </center>
