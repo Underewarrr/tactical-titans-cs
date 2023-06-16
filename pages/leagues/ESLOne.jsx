@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
-import RoundStandings from '../components/RoundStandings.d';
-import RoundInfo from '../components/RoundInfo.d';
+import CompetitionTeams from '../csgo/score/CompetitionTeams.d';
+import CompetitionGames from '../csgo/score/CompetitionGames.d';
+import RoundStandings from '../csgo/score/RoundStandings.d';
+import RoundSchedule from '../csgo/score/RoundSchedule.d';
 
 const ESLOneFixtures = () => {
   const [data, setData] = useState(null);
@@ -94,44 +96,21 @@ const ESLOneFixtures = () => {
       </Row>
       <Row>
         <Col>
-          <Card className="bg-dark text-white">
-            <Card.Body>
-              <Card.Title>Teams:</Card.Title>
-              <ListGroup>
-                {shuffledTeams.map((team) => (
-                  <ListGroup.Item className="bg-dark text-white" key={team.TeamId}>
-                    {team.Name}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            </Card.Body>
-          </Card>
+          <CompetitionTeams teams={shuffledTeams} />
         </Col>
         <Col>
-          <Card className="bg-dark text-white">
-            <Card.Body>
-              <Card.Title>Games:</Card.Title>
-              {filteredGames.length > 0 ? (
-                <ListGroup>
-                  {filteredGames.map((game) => (
-                    <ListGroup.Item className="bg-dark text-white" key={game.GameId}>
-                      {game.TeamAName} vs {game.TeamBName}
-                      <Button variant="primary" size="sm" className="ml-2" onClick={() => handleRoundClick(game.RoundId)}>
-                        Round {game.RoundId}
-                      </Button>
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
-              ) : (
-                <p>No games available.</p>
-              )}
-            </Card.Body>
-          </Card>
+          <CompetitionGames
+            games={filteredGames}
+            handleRoundClick={handleRoundClick}
+          />
         </Col>
       </Row>
 
       {selectedRoundId && (
-        <><RoundInfo roundId={selectedRoundId} /><RoundStandings roundId={selectedRoundId} /></>
+        <>
+          <RoundStandings roundId={selectedRoundId} />
+          <RoundSchedule roundId={selectedRoundId} />
+        </>
       )}
     </Card>
   );
