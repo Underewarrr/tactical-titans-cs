@@ -11,7 +11,7 @@ const CompetitionGames = ({ games, handleRoundClick, loading }) => {
     <Card className="bg-dark text-white">
       <Card.Body>
         <Card.Title>Games:</Card.Title>
-        {games?.length > 0 ? (
+        {(games ?? []).length > 0 ? (
           <ListGroup>
             {games.map((game) => (
               <ListGroup.Item
