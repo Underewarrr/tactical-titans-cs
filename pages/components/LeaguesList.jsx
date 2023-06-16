@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import GamesByDate from './GamesByDate.d';
 import ReactLoading from 'react-loading';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const Leagues = ({ onLeagueSelect }) => {
-  const [scores, setScores] = useState([]);
-  const [lastDate, setLastDate] = useState(null);
+  const [scores, setScores] = useLocalStorage('scores', []);
+  const [lastDate, setLastDate] = useLocalStorage('lastDate', null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const Leagues = ({ onLeagueSelect }) => {
         setScores(data);
         setLoading(false);
       });
-  }, []);
+  }, [setScores]);
 
   const handleLeagueClick = (competitionId) => {
     const league = scores.find(competition => competition.CompetitionId === competitionId);
