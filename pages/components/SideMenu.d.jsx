@@ -85,6 +85,7 @@ class SideMenu extends React.Component {
         </div>
 
         <div id="rightWrapper" style={{ flex: 1 }}>
+          
           <div id="header">
             <a id="fullPage" href="#" onClick={this.handleClick}>|||
            
@@ -96,6 +97,7 @@ class SideMenu extends React.Component {
           <div id="contentWrapper">
             {this.renderContent()}
           </div>
+          
         </div>
       </div>
     );
