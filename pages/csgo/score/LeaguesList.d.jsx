@@ -1,13 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import GamesByDate from './GamesByDate.d';
+import GamesByDate from '../../components/GamesByDate.d';
 import ReactLoading from 'react-loading';
-//import useLocalStorage from '../hooks/useLocalStorage';
+
+const useLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+};
 
 const Leagues = ({ onLeagueSelect }) => {
-  const [scores, setScores] = useLocalStorage('scores', []);
-  const [lastDate, setLastDate] = useLocalStorage('lastDate', null);
+
+  const [scores, setScores] = useState([]);
+  const [lastDate, setLastDate] = useState(null);
   const [loading, setLoading] = useState(true);
+  
+  const handleLeagueClick = (competitionId) => {
+    const league = scores.find(competition => competition.CompetitionId === competitionId);
+    if (league && league.Seasons.length > 0) {
+      const lastSeason = league.Seasons[league.Seasons.length - 1];
+      const endDate = new Date(lastSeason.EndDate).toISOString().split('T')[0];
+      setLastDate(endDate);
+    }
+    onLeagueSelect(competitionId);
+  };
 
   useEffect(() => {
     fetch('https://api.sportsdata.io/v3/csgo/scores/json/Competitions?key=167bc5b286e24056b6976303d4d9a68a')
@@ -18,15 +41,6 @@ const Leagues = ({ onLeagueSelect }) => {
       });
   }, [setScores]);
 
-  const handleLeagueClick = (competitionId) => {
-    const league = scores.find(competition => competition.CompetitionId === competitionId);
-    if (league && league.Seasons.length > 0) {
-      const lastSeason = league.Seasons[league.Seasons.length - 1];
-      const endDate = new Date(lastSeason.EndDate).toISOString().split('T')[0];
-      setLastDate(endDate);
-    }
-    onLeagueSelect(competitionId);
-  };
 
   if (loading) {
     return (

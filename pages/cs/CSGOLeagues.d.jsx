@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import LeaguesList from '../components/LeaguesList';
+import LeaguesList from '../csgo/score/LeaguesList.d'
 import LeagueInfo from '../components/LeagueInfo.d';
 //import MembershipsByTeam from '../components/MemberShipByTeam.d';
 import PlayerByTeam from '../components/PlayerByTeam.d'
