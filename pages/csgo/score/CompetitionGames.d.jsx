@@ -7,27 +7,27 @@ const CompetitionTeams = ({ teams, loading }) => {
     return <Loading type="spin" color="#000" />;
   }
 
+  if (!Array.isArray(teams) || teams.length === 0) {
+    return <p>No teams available.</p>;
+  }
+
   return (
     <Card className="bg-dark text-white">
       <Card.Body>
         <Card.Title>Teams:</Card.Title>
-        {(teams ?? []).length > 0 ? (
-          <ListGroup>
-            {teams.map((team) => (
-              <ListGroup.Item
-                className="bg-dark text-white"
-                key={team.TeamId}
-              >
-                {team.TeamName}
-                <Button variant="primary" size="sm" className="ml-2">
-                  View Team
-                </Button>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        ) : (
-          <p>No teams available.</p>
-        )}
+        <ListGroup>
+          {teams.map((team) => (
+            <ListGroup.Item
+              className="bg-dark text-white"
+              key={team.TeamId}
+            >
+              {team.TeamName}
+              <Button variant="primary" size="sm" className="ml-2">
+                View Team
+              </Button>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
       </Card.Body>
     </Card>
   );
