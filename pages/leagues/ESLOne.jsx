@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Card, Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
 import CompetitionTeams from '../csgo/score/CompetitionTeams.d';
-import CompetitionGames from '../csgo/score/CompetitionGames.d';
+//import CompetitionGames from '../csgo/score/CompetitionGames.d';
 import RoundStandings from '../csgo/score/RoundStandings.d';
 import RoundSchedule from '../csgo/score/RoundSchedule.d';
 import BoxScore from '../csgo/score/BoxScore.d';
