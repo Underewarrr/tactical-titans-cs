@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, ListGroup, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
 
-const CompetitionGames = ({ games, handleRoundClick, loading }) => {
+const CompetitionTeams = ({ teams, loading }) => {
   if (loading) {
     return <Loading type="spin" color="#000" />;
   }
@@ -10,32 +10,27 @@ const CompetitionGames = ({ games, handleRoundClick, loading }) => {
   return (
     <Card className="bg-dark text-white">
       <Card.Body>
-        <Card.Title>Games:</Card.Title>
-        {(games ?? []).length > 0 ? (
+        <Card.Title>Teams:</Card.Title>
+        {(teams ?? []).length > 0 ? (
           <ListGroup>
-            {games.map((game) => (
+            {teams.map((team) => (
               <ListGroup.Item
                 className="bg-dark text-white"
-                key={game.GameId}
+                key={team.TeamId}
               >
-                {game.TeamAName} vs {game.TeamBName}
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="ml-2"
-                  onClick={() => handleRoundClick(game.RoundId, game.GameId)}
-                >
-                  Round {game.RoundId}
+                {team.TeamName}
+                <Button variant="primary" size="sm" className="ml-2">
+                  View Team
                 </Button>
               </ListGroup.Item>
             ))}
           </ListGroup>
         ) : (
-          <p>No games available.</p>
+          <p>No teams available.</p>
         )}
       </Card.Body>
     </Card>
   );
 };
 
-export default CompetitionGames;
+export default CompetitionTeams;
