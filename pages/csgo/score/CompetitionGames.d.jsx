@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { Card, ListGroup, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
 
@@ -34,3 +34,4 @@ const CompetitionTeams = ({ teams, loading }) => {
 };
 
 export default CompetitionTeams;
+ */
