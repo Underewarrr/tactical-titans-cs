@@ -1,7 +1,12 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
+import Loading from 'react-loading';
 
-const CompetitionTeams = ({ teams }) => {
+const CompetitionTeams = ({ teams, loading }) => {
+  if (loading) {
+    return <Loading type="spin" color="#de9b35" />;
+  }
+
   return (
     <Card className="bg-dark text-white">
       <Card.Body>

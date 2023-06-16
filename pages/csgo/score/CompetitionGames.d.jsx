@@ -1,7 +1,12 @@
 import React from 'react';
 import { Card, ListGroup, Button } from 'react-bootstrap';
+import Loading from 'react-loading';
 
-const CompetitionGames = ({ games, handleRoundClick }) => {
+const CompetitionGames = ({ games, handleRoundClick, loading }) => {
+  if (loading) {
+    return <Loading type="spin" color="#000" />;
+  }
+
   return (
     <Card className="bg-dark text-white">
       <Card.Body>
@@ -18,7 +23,7 @@ const CompetitionGames = ({ games, handleRoundClick }) => {
                   variant="primary"
                   size="sm"
                   className="ml-2"
-                  onClick={() => handleRoundClick(game.RoundId)}
+                  onClick={() => handleRoundClick(game.RoundId, game.GameId)}
                 >
                   Round {game.RoundId}
                 </Button>

@@ -1,42 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loading from 'react-loading';
 
 const RoundSchedule = ({ roundId }) => {
-  const [standings, setStandings] = useState([]);
+  const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchStandings = async () => {
+    const fetchSchedule = async () => {
       try {
         const response = await axios.get(
           `https://api.sportsdata.io/v3/csgo/scores/json/Schedule/${roundId}?key=167bc5b286e24056b6976303d4d9a68a`
         );
-        setStandings(response.data);
+        setSchedule(response.data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching standings:', error);
+        console.error('Error fetching schedule:', error);
       }
     };
 
-    fetchStandings();
+    fetchSchedule();
   }, [roundId]);
 
   if (loading) {
-    return <p>Loading standings...</p>;
+    return <Loading type="spin" color="#de9b35" />;
   }
 
-  if (!standings || standings.length === 0) {
-    return <p>No standings available.</p>;
+  if (!schedule || schedule.length === 0) {
+    return <p>No schedule available.</p>;
   }
 
-  // Render standings data
+  // Render schedule data
   return (
     <div>
       <h2>Round Schedule</h2>
       <ul>
-        {standings.map((standing) => (
-          <li key={standing.GameId}>
-            {standing.TeamAName} {standing.TeamAScore} - {standing.TeamBName} {standing.TeamBScore}
+        {schedule.map((game) => (
+          <li key={game.GameId}>
+            {game.TeamAName} {game.TeamAScore} - {game.TeamBName} {game.TeamBScore}
           </li>
         ))}
       </ul>

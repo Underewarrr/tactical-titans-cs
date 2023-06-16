@@ -6,11 +6,13 @@ import CompetitionTeams from '../csgo/score/CompetitionTeams.d';
 import CompetitionGames from '../csgo/score/CompetitionGames.d';
 import RoundStandings from '../csgo/score/RoundStandings.d';
 import RoundSchedule from '../csgo/score/RoundSchedule.d';
+import BoxScore from '../csgo/score/BoxScore.d';
 
 const ESLOneFixtures = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedRoundId, setSelectedRoundId] = useState(null);
+  const [selectedGameId, setSelectedGameId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +31,7 @@ const ESLOneFixtures = () => {
   }, []);
 
   if (loading) {
-    return <Loading type="spin" color="#000" />;
+    return <center><Loading type="spin" color="#de9b35" /></center>;
   }
 
   const shuffledTeams = shuffleArray(data.Teams).slice(0, 7);
@@ -53,8 +55,9 @@ const ESLOneFixtures = () => {
     return false;
   });
 
-  const handleRoundClick = (roundId) => {
+  const handleRoundClick = (roundId, gameId) => {
     setSelectedRoundId(roundId);
+    setSelectedGameId(gameId);
   };
 
   return (
@@ -96,6 +99,10 @@ const ESLOneFixtures = () => {
       </Row>
       <Row>
         <Col>
+          {selectedGameId && <BoxScore gameId={selectedGameId} />}
+        </Col>
+
+        <Col>
           <CompetitionTeams teams={shuffledTeams} />
         </Col>
         <Col>
@@ -108,8 +115,11 @@ const ESLOneFixtures = () => {
 
       {selectedRoundId && (
         <>
-          <RoundStandings roundId={selectedRoundId} />
-          <RoundSchedule roundId={selectedRoundId} />
+        <Container>
+          <RoundStandings className="col-xs-6 col-md-4" roundId={selectedRoundId} />
+          <RoundSchedule className="col-xs-6 col-md-4" roundId={selectedRoundId} />
+        </Container>
+          
         </>
       )}
     </Card>
