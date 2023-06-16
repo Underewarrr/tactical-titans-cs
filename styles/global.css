@@ -155,3 +155,14 @@ body {
   transition: all 0.2s ease;
 }
 /* END SideBar Menu */
+
+/* Correções de estilo para dispositivos menores que 270px */
+@media (max-width: 760px) {
+  /* Estilo para todos os componentes Card */
+  .card {
+    /* Defina aqui o estilo desejado para os componentes Card em telas menores que 270px */
+    /* Por exemplo, você pode reduzir a largura ou ajustar o espaçamento interno */
+    width: 100%;
+    padding: 544px;
+  }
+}
