@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import Article from '../components/Article.d';
-import CurrentLeagues from '../widgets/CurrentLeagues';
+import CurrentLeagues from '../csgo/widgets/CurrentLeagues';
 import SteamLink from '../components/SteamLink';
 
 const CSGOUpdates = () => {

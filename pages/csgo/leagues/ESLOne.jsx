@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
-import CompetitionTeams from '../csgo/score/CompetitionTeams.d';
-import CompetitionGames from '../csgo/score/CompetitionGames.d';
-import RoundStandings from '../csgo/score/RoundStandings.d';
-import RoundSchedule from '../csgo/score/RoundSchedule.d';
-import BoxScore from '../csgo/score/BoxScore.d';
+import CompetitionTeams from '../score/CompetitionTeams.d';
+import CompetitionGames from '../score/CompetitionGames.d';
+import RoundStandings from '../score/RoundStandings.d';
+import RoundSchedule from '../score/RoundSchedule.d';
+import BoxScore from '../score/BoxScore.d';
 
-const ESLOneFixtures = () => {
+const ESLOne = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedRoundId, setSelectedRoundId] = useState(null);
@@ -126,4 +126,4 @@ const ESLOneFixtures = () => {
   );
 };
 
-export default ESLOneFixtures;
+export default ESLOne;
