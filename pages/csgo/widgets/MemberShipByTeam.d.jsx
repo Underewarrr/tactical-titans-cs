@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import ReactLoading from 'react-loading';
 import { useRouter } from 'next/router';
-import SideMenubar from '../components/SideMenu.d';
+import SideMenubar from '../../components/SideMenu.d';
 
 const MembershipsByTeam = ({ teamId }) => {
   const [memberships, setMemberships] = useState(null);

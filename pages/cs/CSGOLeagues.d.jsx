@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import LeaguesList from '../csgo/score/LeaguesList.d'
-import LeagueInfo from '../components/LeagueInfo.d';
-//import MembershipsByTeam from '../components/MemberShipByTeam.d';
-import PlayerByTeam from '../components/PlayerByTeam.d'
-import SteamLink from '../components/SteamLink';
+import LeaguesList from '../csgo/widgets/LeaguesList.d';
+import LeagueInfo from '../csgo/widgets/LeagueInfo.d';
+//import MembershipsByTeam from '../csgo/MemberShipByTeam.d';
+import PlayerByTeam from '../csgo/widgets/PlayerByTeam.d'
+import SteamLink from '../csgo/widgets/SteamLink';
 const Leagues = () => {
   const [selectedLeagueId, setSelectedLeagueId] = useState(null);
   const [selectedTeamId, setSelectedTeamId] = useState(null);

@@ -2,17 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
-import CompetitionTeams from '../score/CompetitionTeams.d';
-import CompetitionGames from '../score/CompetitionGames.d';
 import RoundStandings from '../score/RoundStandings.d';
-import RoundSchedule from '../score/RoundSchedule.d';
-import BoxScore from '../score/BoxScore.d';
+import RoundInfo from '../score/RoundInfo.d';
 
-const ESLOne = () => {
+const ESLOneFixtures = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedRoundId, setSelectedRoundId] = useState(null);
-  const [selectedGameId, setSelectedGameId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +27,7 @@ const ESLOne = () => {
   }, []);
 
   if (loading) {
-    return <center><Loading type="spin" color="#de9b35" /></center>;
+    return <Loading type="spin" color="#000" />;
   }
 
   const shuffledTeams = shuffleArray(data.Teams).slice(0, 7);
@@ -55,9 +51,12 @@ const ESLOne = () => {
     return false;
   });
 
-  const handleRoundClick = (roundId, gameId) => {
+  const handleGameClick = (roundId) => {
     setSelectedRoundId(roundId);
-    setSelectedGameId(gameId);
+  };
+
+  const handleRoundClick = (roundId) => {
+    setSelectedRoundId(roundId);
   };
 
   return (
@@ -99,31 +98,48 @@ const ESLOne = () => {
       </Row>
       <Row>
         <Col>
-          {selectedGameId && <BoxScore gameId={selectedGameId} />}
+          <Card className="bg-dark text-white">
+            <Card.Body>
+              <Card.Title>Teams:</Card.Title>
+              <ListGroup>
+                {shuffledTeams.map((team) => (
+                  <ListGroup.Item className="bg-dark text-white" key={team.TeamId}>
+                    {team.Name}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </Card.Body>
+          </Card>
         </Col>
-
         <Col>
-          <CompetitionTeams teams={shuffledTeams} />
-        </Col>
-        <Col>
-          <CompetitionGames
-            games={filteredGames}
-            handleRoundClick={handleRoundClick}
-          />
+          <Card className="bg-dark text-white">
+            <Card.Body>
+              <Card.Title>Games:</Card.Title>
+              {filteredGames.length > 0 ? (
+                <ListGroup>
+                  {filteredGames.map((game) => (
+                    <ListGroup.Item className="bg-dark text-white" key={game.GameId}>
+                      {game.TeamAName} vs {game.TeamBName}
+                      <Button variant="primary" size="sm" className="ml-2" onClick={() => handleRoundClick(game.RoundId)}>
+                        Round {game.RoundId}
+                      </Button>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              ) : (
+                <p>No games available.</p>
+              )}
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
 
       {selectedRoundId && (
-        <>
-        <Container>
-          <RoundStandings className="col-xs-6 col-md-4" roundId={selectedRoundId} />
-          <RoundSchedule className="col-xs-6 col-md-4" roundId={selectedRoundId} />
-        </Container>
-          
-        </>
+        <><RoundInfo roundId={selectedRoundId} />
+        <RoundStandings roundId={selectedRoundId} /></>
       )}
     </Card>
   );
 };
 
-export default ESLOne;
+export default ESLOneFixtures;

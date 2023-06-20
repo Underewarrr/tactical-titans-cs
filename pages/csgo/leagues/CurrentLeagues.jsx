@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ESLOne from '../leagues/ESLOne';
+import ESLOne from './ESLOne';
 import axios from 'axios';
 
 const CurrentLeagues = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import SteamLink from '../components/SteamLink'
+import SteamLink from '../csgo/widgets/SteamLink'
 
 const CSGONews = () => {
   return (
