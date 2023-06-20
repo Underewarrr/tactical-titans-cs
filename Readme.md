@@ -2,18 +2,20 @@
 ...
 Em Construção!
 
+
+### CSGO API
+- [Sobre a API de CSGO](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
+
 ### CSGO PR's
 - [SideBar Menu.](https://github.com/Underewarrr/tactical-titans-cs/pull/1)
 - [Atualizações do CSGO SteamAPI. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/2)
 - [Atualizações do CSGO SteamAPI. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/3)
 - [Pagina de Ligas e Times. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
 - [Pagina de Ligas e Times. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/5)
-- [Carrega os jogadores de um time selecionado;](https://github.com/Underewarrr/tactical-titans-cs/pull/6)
-- [Adiciona Wdiget a pagina de Updates](https://github.com/Underewarrr/tactical-titans-cs/pull/7)
-- [Adiciona Wdiget a pagina de Updates](https://github.com/Underewarrr/tactical-titans-cs/pull/8)
-- [Melhora os Widgets de partidas e rounds](https://github.com/Underewarrr/tactical-titans-cs/pull/9)
-- [Sobre a API de CSGO](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
-
+- [Carrega os jogadores de um time selecionado](https://github.com/Underewarrr/tactical-titans-cs/pull/6)
+- [Adiciona Wdiget a pagina de Updates. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/7)
+- [Adiciona Wdiget a pagina de Updates. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/8)
+- [Melhorias em pastas e logicas + estilos e novas funcionalidades.](https://github.com/Underewarrr/tactical-titans-cs/pull/9)
 ### Vercel
 - As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.
 
@@ -73,6 +75,7 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 # Ferramentas
 ## Front-End
 ### Frameworks
+- NextJS
 - React 
 - Bootstrap
 ### JustLibs
@@ -84,23 +87,13 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 ## Back-End
 ### Frameworks
 - NextJS
-
 ### JustLibs
 - Sequelize
 - Mysql2
 ### Languages
 Typescript, Javascript
 
-## Configuração de ORM (Database)
- - [x] [User](https://github.com/Underewarrr/template-vercel-serverless-fullstack/blob/master/database/models/User.ts)
-## Rotas Front-End
-- /user
-  - /login
-  - /register
+### Design Patterns
+[Serverless Development](https://www.infoq.com/articles/design-patterns-for-serverless-systems/)
 
-## Rotas Back-end
-- /api
-  - /user
-    - /login
-    - /register
 
