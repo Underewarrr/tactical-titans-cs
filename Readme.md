@@ -86,14 +86,17 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 - swr NOT USED
 ## Back-End
 ### Frameworks
-- NextJS
+- [NextJS Veja mais informação sobre o NextJS Na Vercel](https://vercel.com/docs/frameworks/nextjs)
+
 ### JustLibs
 - Sequelize
 - Mysql2
 ### Languages
 Typescript, Javascript
 
+
 ### Design Patterns
 [Serverless Development](https://www.infoq.com/articles/design-patterns-for-serverless-systems/)
+- [Simples de usar com a Vercel](https://vercel.com/docs/concepts/functions/serverless-functions)
 
 
