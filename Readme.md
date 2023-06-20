@@ -12,6 +12,7 @@ Em Construção!
 - [Adiciona Wdiget a pagina de Updates](https://github.com/Underewarrr/tactical-titans-cs/pull/7)
 - [Adiciona Wdiget a pagina de Updates](https://github.com/Underewarrr/tactical-titans-cs/pull/8)
 - [Melhora os Widgets de partidas e rounds](https://github.com/Underewarrr/tactical-titans-cs/pull/9)
+- [Sobre a API de CSGO](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
 
 ### Vercel
 - As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.
