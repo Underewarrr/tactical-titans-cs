@@ -3,7 +3,8 @@ import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import Article from '../components/Article.d';
-import CurrentLeagues from '../widgets/CurrentLeagues';
+import CurrentLeagues from '../csgo/leagues/CurrentLeagues';
+import SteamLink from '../csgo/widgets/SteamLink';
 
 const CSGOUpdates = () => {
   const [csgoNews, setCSGONews] = useState([]);
@@ -90,8 +91,8 @@ const sanitizeContents = (contents) => {
   }, {});
 
   return (
-    <div className="main-card-csgo">
-      < CurrentLeagues/>
+    <><SteamLink link="https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" /><div className="main-card-csgo">
+      <CurrentLeagues />
       <center>
         <h2>CSGO Updates</h2>
       </center>
@@ -116,8 +117,7 @@ const sanitizeContents = (contents) => {
                         title={newsItem.title}
                         content={sanitizeContents(newsItem.contents)}
                         imageUrl={getSteamImageURL(newsItem.contents)}
-                        url={newsItem.url}
-                      />
+                        url={newsItem.url} />
                     )}
                   </div>
                 ))}
@@ -126,7 +126,7 @@ const sanitizeContents = (contents) => {
           </Card>
         ))
       )}
-    </div>
+    </div></>
   );
 };
 

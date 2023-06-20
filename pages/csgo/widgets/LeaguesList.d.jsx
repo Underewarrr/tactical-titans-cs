@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import GamesByDate from './GamesByDate.d';
+import GamesByDate from '../../components/GamesByDate.d';
 import ReactLoading from 'react-loading';
 
+const useLocalStorage = (key, initialValue) => {
+  const [value, setValue] = useState(() => {
+    const storedValue = localStorage.getItem(key);
+    return storedValue ? JSON.parse(storedValue) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+};
+
 const Leagues = ({ onLeagueSelect }) => {
+
   const [scores, setScores] = useState([]);
   const [lastDate, setLastDate] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('https://api.sportsdata.io/v3/csgo/scores/json/Competitions?key=167bc5b286e24056b6976303d4d9a68a')
-      .then(response => response.json())
-      .then(data => {
-        setScores(data);
-        setLoading(false);
-      });
-  }, []);
-
+  
   const handleLeagueClick = (competitionId) => {
     const league = scores.find(competition => competition.CompetitionId === competitionId);
     if (league && league.Seasons.length > 0) {
@@ -26,6 +31,16 @@ const Leagues = ({ onLeagueSelect }) => {
     }
     onLeagueSelect(competitionId);
   };
+
+  useEffect(() => {
+    fetch('https://api.sportsdata.io/v3/csgo/scores/json/Competitions?key=167bc5b286e24056b6976303d4d9a68a')
+      .then(response => response.json())
+      .then(data => {
+        setScores(data);
+        setLoading(false);
+      });
+  }, [setScores]);
+
 
   if (loading) {
     return (

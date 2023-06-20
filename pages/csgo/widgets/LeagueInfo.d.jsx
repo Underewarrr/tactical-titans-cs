@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import ReactLoading from 'react-loading';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import MembershipsByTeam from '../components/MemberShipByTeam.d';
+import MembershipsByTeam from './MemberShipByTeam.d';
 
 const LeagueInfo = ({ leagueId, onTeamSelect }) => {
   const [leagueInfo, setLeagueInfo] = useState(null);

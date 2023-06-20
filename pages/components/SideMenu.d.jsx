@@ -5,6 +5,8 @@ import CSGOPlayers from '../cs/CSGOPlayers.d';
 import CSGONews from '../cs/CSGONews.d';
 import CSGOUpdates from '../cs/CSGOUpdates.d';
 import CSGOScore from '../cs/CSGOLeagues.d';
+import Leagues from '../csgo/leagues/ESLOne'
+import CurrentLeagues from '../csgo/leagues/CurrentLeagues';
 
 class SideMenu extends React.Component {
   state = {
@@ -50,10 +52,10 @@ class SideMenu extends React.Component {
             <CSGOPlayers />
           </section>
         );
-      case 'CS:GO Leagues':
+      case 'CS:GO Leagues And Teams':
         return (
           <section>
-            <CSGOLeagues />
+            <CurrentLeagues />
           </section>
         );
       default:
@@ -80,11 +82,13 @@ class SideMenu extends React.Component {
           <div id="listView" className="list">
             <li className={activeItem === 'CS:GO News' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO News')}><a href="#">CS:GO News</a></li>
             <li className={activeItem === 'CS:GO Updates' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Updates')}><a href="#">CS:GO Updates</a></li>
-            <li className={activeItem === 'CS:GO Leagues' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Leagues')}><a href="#">CS:GO Leagues/Teams</a></li>
+            <li className={activeItem === 'CS:GO LeaguesOld' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO LeaguesOld')}><a href="#">CS:GO Leagues/Teams OLD</a></li>
+            <li className={activeItem === 'CS:GO Leagues And Teams' ? 'list-item-active' : ''} onClick={(e) => this.handleMenuItemClick(e, 'CS:GO Leagues And Teams')}><a href="#">CS:GO Leagues/Teams</a></li>
           </div>
         </div>
 
         <div id="rightWrapper" style={{ flex: 1 }}>
+          
           <div id="header">
             <a id="fullPage" href="#" onClick={this.handleClick}>|||
            
@@ -96,6 +100,7 @@ class SideMenu extends React.Component {
           <div id="contentWrapper">
             {this.renderContent()}
           </div>
+          
         </div>
       </div>
     );

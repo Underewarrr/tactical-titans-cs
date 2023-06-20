@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Card, Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
 import Loading from 'react-loading';
-import RoundStandings from '../components/RoundStandings.d';
-import RoundInfo from '../components/RoundInfo.d';
+import RoundStandings from '../score/RoundStandings.d';
+import RoundInfo from '../score/RoundInfo.d';
 
 const ESLOneFixtures = () => {
   const [data, setData] = useState(null);
@@ -50,6 +50,10 @@ const ESLOneFixtures = () => {
     }
     return false;
   });
+
+  const handleGameClick = (roundId) => {
+    setSelectedRoundId(roundId);
+  };
 
   const handleRoundClick = (roundId) => {
     setSelectedRoundId(roundId);
@@ -131,7 +135,8 @@ const ESLOneFixtures = () => {
       </Row>
 
       {selectedRoundId && (
-        <><RoundInfo roundId={selectedRoundId} /><RoundStandings roundId={selectedRoundId} /></>
+        <><RoundInfo roundId={selectedRoundId} />
+        <RoundStandings roundId={selectedRoundId} /></>
       )}
     </Card>
   );

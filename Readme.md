@@ -2,43 +2,41 @@
 ...
 Em Construção!
 
+
+### CSGO API
+- [Sobre a API de CSGO](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
+
 ### CSGO PR's
 - [SideBar Menu.](https://github.com/Underewarrr/tactical-titans-cs/pull/1)
 - [Atualizações do CSGO SteamAPI. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/2)
-- 
 - [Atualizações do CSGO SteamAPI. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/3)
 - [Pagina de Ligas e Times. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/4)
 - [Pagina de Ligas e Times. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/5)
-- [Carrega os jogadores de um time selecionado;](https://github.com/Underewarrr/tactical-titans-cs/pull/6)
-- [Adiciona Wdiget a pagina de Updates](https://github.com/Underewarrr/tactical-titans-cs/pull/7)
-- 
-### Vercel
-- As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.
+- [Carrega os jogadores de um time selecionado](https://github.com/Underewarrr/tactical-titans-cs/pull/6)
+- [Adiciona Wdiget a pagina de Updates. 1/2](https://github.com/Underewarrr/tactical-titans-cs/pull/7)
+- [Adiciona Wdiget a pagina de Updates. 2/2](https://github.com/Underewarrr/tactical-titans-cs/pull/8)
+- [Melhorias em pastas e logicas + estilos e novas funcionalidades.](https://github.com/Underewarrr/tactical-titans-cs/pull/9)
 
-- Logs nas funções Serverless.
-
-### NextJS
-- Seguindo o padrão da documentação da [vercel + nextjs](https://vercel.com/docs/frameworks/nextjs), você pode entender melhor sobre a organização das rotas da api ou paginas.
 
 #### Front-end Routes :
 ##### OBS : Para as rotas e as requisições a pasta pages não será incluida a rota final sendo : /user/pagename.
 
-`/pages/user/pagename`
-- OBS: Observe que nesse exemplo teriamos um arquivo pagename.ts
+`/pages/user/example`
+- OBS: Observe que nesse exemplo teriamos um arquivo example.ts
 
 - OBS: Se o nome do arquivo/pagina for index.ts então será carregado com o nome da pasta do arquivo exemplo :
-`/pages/user/login`
-- OBS: Observe que nesse caso teriamos um arquivo index.ts
+`/pages/user/example`
+- OBS: Observe que nesse caso teriamos um arquivo example.ts
 
 #### Back-end Routes :
 ##### OBS : Para as rotas e as requisições a pasta pages não será incluida a rota final sendo : /api/user/pagename.
 
-`/pages/api/user/pagename`
-- OBS: Observe que nesse exemplo teriamos um arquivo pagename.ts
+`/pages/api/user/example`
+- OBS: Observe que nesse exemplo teriamos um arquivo example.ts
 
 - OBS: Se o nome do arquivo/pagina for index.ts então será carregado com o nome da pasta do arquivo exemplo :
-`/pages/api/user/login`
-- OBS: Observe que nesse caso teriamos um arquivo index.ts
+`/pages/api/user/example`
+- OBS: Observe que nesse caso teriamos um arquivo example.ts
 
 ## Como rodar
 ### (Vercel-Pro-Way)
@@ -71,6 +69,7 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 # Ferramentas
 ## Front-End
 ### Frameworks
+- NextJS
 - React 
 - Bootstrap
 ### JustLibs
@@ -81,7 +80,8 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 - swr NOT USED
 ## Back-End
 ### Frameworks
-- NextJS
+- [NextJS Veja mais informação sobre o NextJS Na Vercel](https://vercel.com/docs/frameworks/nextjs)
+- Seguindo o padrão da documentação da [vercel + nextjs](https://vercel.com/docs/frameworks/nextjs), você pode entender melhor sobre a organização das rotas da api ou paginas.
 
 ### JustLibs
 - Sequelize
@@ -89,16 +89,11 @@ Para proteger uma rota inicie o component `<ProtectedRoute />`
 ### Languages
 Typescript, Javascript
 
-## Configuração de ORM (Database)
- - [x] [User](https://github.com/Underewarrr/template-vercel-serverless-fullstack/blob/master/database/models/User.ts)
-## Rotas Front-End
-- /user
-  - /login
-  - /register
 
-## Rotas Back-end
-- /api
-  - /user
-    - /login
-    - /register
+### Design Patterns
+[Serverless Development](https://www.infoq.com/articles/design-patterns-for-serverless-systems/)
+- [Simples de usar com a Vercel](https://vercel.com/docs/concepts/functions/serverless-functions)
+- As funções [Serverless](https://vercel.com/docs/concepts/functions/serverless-functions) permitem que os desenvolvedores escrevam funções em JavaScript e outras linguagens para lidar com autenticação de usuário, envios de formulários, consultas de banco de dados  e muito mais.
+
+- Logs nas funções Serverless.
 
